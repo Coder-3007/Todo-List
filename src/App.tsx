@@ -1,36 +1,19 @@
-import { useState } from "react";
-
-import { dummyData } from "./data/todos";
 import AddForm from "./Components/AddForm";
 import TodoList from "./Components/TodoList";
+import TodoSummary from "./Components/TodoSummary";
+
+import useTodos from "./Components/useTodos";
 
 function App() {
-  const [todos, setTodos] = useState(dummyData);
+  // using custom hooks
+  const {
+    todos,
+    addTodo,
+    setTodoCompleted,
+    deleteTodo,
+    deleteAllCompletedTodos,
+  } = useTodos();
 
-  function setTodoCompleted(id: number, completed: boolean) {
-    // alert(
-    //   `Todo with id ${id} is  ${completed ? "completed" : "not completed"}`
-    // );
-
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) => (todo.id === id ? { ...todo, completed } : todo))
-    );
-  }
-
-  function addTodo(title: string) {
-    setTodos((prevTodos) => [
-      {
-        id: prevTodos.length + 1,
-        title,
-        completed: false,
-      },
-      ...prevTodos,
-    ]);
-  }
-
-  function deleteTodo(id: number) {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
-  }
   return (
     <main className="py-10 h-screen space-y-5">
       <h1 className="font-bold text-3xl  text-center">Todo List</h1>
@@ -42,6 +25,7 @@ function App() {
           onDelete={deleteTodo}
         />
       </div>
+      <TodoSummary todos={todos} deleteAllCompleted={deleteAllCompletedTodos} />
     </main>
   );
 }

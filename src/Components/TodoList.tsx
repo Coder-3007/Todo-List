@@ -2,7 +2,7 @@ import { Todo } from "../Type/todo";
 import TodoItem from "./TodoItem";
 
 interface TodoListProps {
-  todo: Todo[];
+  todos: Todo[];
   onCompleteChange: (id: number, completed: boolean) => void;
   onDelete: (id: number) => void;
 }
@@ -32,7 +32,7 @@ export default function TodoList({
       </div>
       {todos.length === 0 && (
         <div className="text-center">
-          <h1 className="font-bold text-3xl text-gray-600">
+          <h1 className="font-bold text-3xl text-gray-100">
             You have no todos
           </h1>
         </div>

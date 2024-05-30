@@ -16,7 +16,7 @@ export default function TodoItem({
     <div className="flex items-center gap-1 ">
       <label
         className="flex  items-center gap-2 border rounded-md p-2
-       border-gray-400 bg-white hover:bg-slate-50 grow"
+       border-blue-400 bg-white hover:bg-blue-50 grow"
       >
         <input
           type="checkbox"
@@ -25,12 +25,17 @@ export default function TodoItem({
           className="scale-125"
         />
         {/* applied ternary operator */}
-        <span className={todo.completed ? "line-through text-gray-400" : ""}>
+        <span
+          className={todo.completed ? "line-through text-blue-300-400" : ""}
+        >
           {todo.title}
         </span>
       </label>
-      <button onClick={() => onDelete(todo.id)} className="p-2">
-        <Trash2 size={20} className="text-gray-500" />
+      <button
+        onClick={() => onDelete(todo.id)}
+        className="p-2 hover:no-underline  "
+      >
+        <Trash2 size={20} className="text-red-600 hover:bg-red-200" />
       </button>
     </div>
   );
